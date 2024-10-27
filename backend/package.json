@@ -1,0 +1,26 @@
+{
+	"name": "Authentication Form",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "ts-node-dev ./src/index.ts"
+	},
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"@biomejs/biome": "^1.9.3",
+		"@types/cors": "^2.8.17",
+		"@types/express": "^5",
+		"express": "^5",
+		"ts-node-dev": "^2.0.0"
+	},
+	"dependencies": {
+		"cors": "^2.8.5",
+		"reflect-metadata": "^0.2.2",
+		"sqlite3": "^5.1.7",
+		"typeorm": "^0.3.20",
+		"zod": "^3.23.8"
+	}
+}
