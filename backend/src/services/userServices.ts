@@ -1,5 +1,5 @@
 import { UserEntity } from "../entities/User";
-import type { RegisterUserData } from "../schemas/userSchemas";
+import type { RegisterUserData, LoginUserData } from "../schemas/userSchemas";
 
 const bcrypt = require("bcrypt");
 
@@ -16,4 +16,14 @@ export const registerUser = async (data: RegisterUserData) => {
 	newUser.password = hashedPassword;
 
 	return await UserEntity.save(newUser);
+};
+
+export const loginUser = async ({ email, password }: LoginUserData) => {
+	const user = await UserEntity.findOne({ where: { email: email } });
+	if (!user) return null;
+
+	const passwordIsValid = await bcrypt.compare(password, user.password);
+	if (!passwordIsValid) return null;
+
+	return user;
 };
