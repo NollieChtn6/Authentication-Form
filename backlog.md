@@ -6,8 +6,8 @@ Last updated on: October, 28, 2024
 
 - [ ] Feature: logout
 - [x] Feature: create route /profile to access user profile
-- [ ] Check user authentication
-  - [ ] create authMiddleware
+- [x] Check user authentication
+  - [x] create authMiddleware
 - [ ] Feature: signUp/signIn with Google
 
 ## Frontend
