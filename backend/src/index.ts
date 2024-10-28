@@ -5,6 +5,7 @@
 import Express from "express";
 import "reflect-metadata";
 import cors from "cors";
+import { initializeDataSource } from "./config/db";
 
 const app = Express();
 const PORT = 3000;
@@ -17,5 +18,6 @@ app.get("/", (req, res) => {
 });
 
 app.listen(PORT, async () => {
+	await initializeDataSource();
 	console.log(`App listening on: http://localhost:${PORT}`);
 });
