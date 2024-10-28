@@ -3,6 +3,17 @@ import type { RegisterUserData, LoginUserData } from "../schemas/userSchemas";
 
 const bcrypt = require("bcrypt");
 
+export const getUserById = async (
+	userId: number,
+): Promise<UserEntity | null> => {
+	const user = await UserEntity.findOne({
+		where: { id: userId },
+		select: ["id", "firstName", "email", "createdAt"],
+	});
+	if (!user) return user;
+	return user;
+};
+
 export const registerUser = async (data: RegisterUserData) => {
 	const userExists = await UserEntity.findOne({
 		where: { email: data.email },
