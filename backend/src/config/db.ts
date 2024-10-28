@@ -1,9 +1,10 @@
 import { DataSource } from "typeorm";
+import { UserEntity } from "../entities/User";
 
 const dataSource = new DataSource({
 	type: "sqlite",
 	database: "./authentication-challenge.sqlite",
-	entities: [],
+	entities: [UserEntity],
 	synchronize: true,
 });
 
