@@ -4,6 +4,7 @@ import cors from "cors";
 import { initializeDataSource } from "./config/db";
 import { catchValidationErrors } from "./middlewares/inputValidation";
 import { userRouter } from "./routes/userRouter";
+
 require("dotenv").config();
 
 const app = Express();
@@ -18,7 +19,11 @@ app.get("/", (req, res) => {
 	res.send("Hello World!");
 });
 
-app.listen(PORT, async () => {
-	await initializeDataSource();
-	console.log(`App listening on: http://localhost:${PORT}`);
-});
+app
+	.listen(PORT, async () => {
+		await initializeDataSource();
+		console.log(`App listening on: http://localhost:${PORT}`);
+	})
+	.on("error", (e) => {
+		console.log("Error happened: ", e.message);
+	});
