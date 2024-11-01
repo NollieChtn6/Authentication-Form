@@ -1,5 +1,5 @@
 import type { Request, Response, NextFunction } from "express";
-import jwt, { Secret, type JwtPayload } from "jsonwebtoken";
+import jwt, { type JwtPayload } from "jsonwebtoken";
 import { StatusCodes } from "http-status-codes";
 
 // Useful resource on how to create custom request interface and prevent typing errors:
@@ -16,7 +16,7 @@ export const authenticateJWT = (
 	const authHeader = req.headers.authorization;
 	const token = authHeader?.split(" ")[1];
 
-	if (token == null) return res.sendStatus(401);
+	if (token == null) return res.sendStatus(StatusCodes.UNAUTHORIZED);
 
 	try {
 		const decoded = jwt.verify(token, process.env.JWT_SECRET as string);
