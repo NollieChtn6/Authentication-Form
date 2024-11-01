@@ -52,10 +52,12 @@ export const signIn = async (req: Request, res: Response) => {
 		}
 
 		const token = generateJWT(user.id, process.env.JWT_SECRET as string);
-
-		return res
-			.status(StatusCodes.OK)
-			.json({ message: "Login successful", token });
+		res.cookie("token", token, {
+			httpOnly: true,
+			secure: false,
+			sameSite: "strict",
+		});
+		return res.status(StatusCodes.OK).json({ message: "Login successful" });
 	} catch (error) {
 		return res
 			.status(StatusCodes.INTERNAL_SERVER_ERROR)
