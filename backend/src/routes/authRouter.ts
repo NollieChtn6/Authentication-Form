@@ -1,6 +1,4 @@
-import type { Request, Response } from "express";
 export const authRouter = require("express").Router();
-import { StatusCodes } from "http-status-codes";
 
 import {
 	handleGoogleCallback,
