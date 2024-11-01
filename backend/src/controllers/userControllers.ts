@@ -3,10 +3,26 @@ import { StatusCodes } from "http-status-codes";
 import { loginUserSchema, registerUserSchema } from "../schemas/userSchemas";
 import { getUserById, loginUser, registerUser } from "../services/userServices";
 import { generateJWT } from "../utils/generateJWT";
+import type { JwtPayload } from "jsonwebtoken";
 
-export const getUserProfile = async (req: Request, res: Response) => {
+export interface CustomRequest extends Request {
+	token?: string | JwtPayload;
+}
+
+export const getUserProfile = async (req: CustomRequest, res: Response) => {
+	const userId = Number(req.params.id);
+	const decodedToken = req.token;
+
+	if (!decodedToken || typeof decodedToken === "string" || !decodedToken.id) {
+		return res.sendStatus(StatusCodes.UNAUTHORIZED);
+	}
+
+	if (decodedToken.id !== userId) {
+		return res.status(StatusCodes.FORBIDDEN).json({ error: "Access denied" });
+	}
+
 	try {
-		const userId = Number(req.params.id);
+		// const userId = Number(req.params.id);
 		const user = await getUserById(userId);
 		if (!user) {
 			return res
