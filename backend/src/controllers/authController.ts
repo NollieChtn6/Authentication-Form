@@ -6,7 +6,7 @@ import { googleAuthConfig } from "../config/googleAuthConfig";
 import { UserEntity } from "../entities/User";
 import { generateJWT } from "../utils/generateJWT";
 
-export const redirectToGoogle = (req: Request, res: Response) => {
+export const redirectToGoogleOAuth = (req: Request, res: Response) => {
 	const googleAuthUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${googleAuthConfig.GOOGLE_CLIENT_ID}&redirect_uri=${googleAuthConfig.REDIRECT_URI}&response_type=code&scope=profile email`;
 	res.redirect(googleAuthUrl);
 	//console.log("Redirected!");
