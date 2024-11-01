@@ -1,9 +1,8 @@
 import type { Request, Response } from "express";
-import { getUserById, registerUser, loginUser } from "../services/userServices";
-import { registerUserSchema, loginUserSchema } from "../schemas/userSchemas";
-
 import { StatusCodes } from "http-status-codes";
-import jwt from "jsonwebtoken";
+import { loginUserSchema, registerUserSchema } from "../schemas/userSchemas";
+import { getUserById, loginUser, registerUser } from "../services/userServices";
+import { generateJWT } from "../utils/generateJWT";
 
 export const getUserProfile = async (req: Request, res: Response) => {
 	try {
@@ -52,11 +51,7 @@ export const signIn = async (req: Request, res: Response) => {
 				.json({ error: "Invalid email or password" });
 		}
 
-		const token = jwt.sign(
-			{ userId: user.id },
-			process.env.JWT_SECRET as string,
-			{ expiresIn: "1h" },
-		);
+		const token = generateJWT(user.id, process.env.JWT_SECRET as string);
 
 		return res
 			.status(StatusCodes.OK)
