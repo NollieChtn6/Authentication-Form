@@ -1,0 +1,37 @@
+GET http://localhost:3000/api/users/3
+# Replace token on every login!
+Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzMwNDk5NzA5LCJleHAiOjE3MzA1MDMzMDl9.V1cMmVj0CK7HFP5S8LH9LGSCOcE1xlzcwuHzvIMbtpI
+
+POST http://localhost:3000/api/users/signup
+Content-Type: application/json
+
+# {
+#   "firstName": "John",
+#   "email": "john@email.com",
+#   "password": "JohnPassword@123"
+# }
+
+# {
+#   "firstName": "Paul",
+#   "email": "paul@email.com",
+#   "password": "PaulPassword@123"
+# }
+
+{
+  "firstName": "Patate",
+  "email": "patate@email.com",
+  "password": "PatatePassword@123"
+}
+
+###
+POST http://localhost:3000/api/users/login
+Content-Type: application/json
+
+{
+  "email": "patate@email.com",
+  "password": "PatatePassword@123"
+}
+
+### 
+# Open in navigator!
+GET http://localhost:3000/api/auth/google
