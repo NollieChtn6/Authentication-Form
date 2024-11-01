@@ -8,7 +8,7 @@ Last updated on: October, 28, 2024
 - [x] Feature: create route /profile to access user profile
 - [x] Check user authentication
   - [x] create authMiddleware
-- [ ] Feature: signUp/signIn with Google
+- [x] Feature: signUp/signIn with Google
 
 ## Frontend
 
