@@ -146,3 +146,13 @@ footer {
 		transition: ease-in 0.2s;
 	}
 }
+
+.home-btn {
+	display: flex;
+	padding: 5px;
+	background-color: transparent;
+	position: fixed;
+	top: 10px;
+	left: 10px;
+	z-index: 1000;
+}
