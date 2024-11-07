@@ -9,5 +9,15 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+     <script>
+      window.onload = () => {
+        const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
+        const meta = document.createElement('meta');
+        meta.name = "google-signin-client_id";
+        meta.content = clientId;
+        document.head.appendChild(meta);
+      };
+    </script>
   </body>
 </html>
