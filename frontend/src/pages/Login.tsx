@@ -19,7 +19,7 @@ export function LogIn() {
 				}}
 				auto_select={true}
 				theme="filled_blue"
-				context="signin"
+				text="signin_with"
 				locale="en"
 			/>
 			<p className="option auth-option">
