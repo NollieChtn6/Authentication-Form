@@ -18,7 +18,7 @@ export function SignUp() {
 				}}
 				auto_select={true}
 				theme="filled_blue"
-				context="signup"
+				text="signup_with"
 				locale="en"
 			/>
 			<p className="option auth-option">
