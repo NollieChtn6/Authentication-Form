@@ -21,6 +21,10 @@ main {
 }
 
 .page-container {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+
 	h2 {
 		color: var(--darkest);
 		font-size: 2rem;
