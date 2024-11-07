@@ -1,5 +1,7 @@
 import { match } from "ts-pattern";
+import { Link } from "@swan-io/chicane";
 import { Router } from "./router/router";
+import { House } from "lucide-react";
 
 import { Home } from "./pages/Home";
 import { LogIn } from "./pages/Login";
@@ -11,6 +13,11 @@ function App() {
 	const route = Router.useRoute(["Home", "Login", "Signup"]);
 	return (
 		<main>
+			<Link to={Router.Home()}>
+				<button className="btn home-btn" type="button">
+					<House />
+				</button>
+			</Link>
 			{match(route)
 				.with({ name: "Home" }, () => <Home />)
 				.with({ name: "Login" }, () => <LogIn />)
