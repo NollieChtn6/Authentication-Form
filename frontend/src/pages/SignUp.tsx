@@ -1,4 +1,5 @@
 import { Link } from "@swan-io/chicane";
+import { GoogleLogin } from "@react-oauth/google";
 import { Router } from "../router/router";
 import { SignUpForm } from "../components/SignupForm";
 
@@ -8,7 +9,18 @@ export function SignUp() {
 			<h2>Sign Up</h2>
 			<SignUpForm />
 			<p>OR</p>
-			<div>Sign up with Google</div>
+			<GoogleLogin
+				onSuccess={(credentialResponse) => {
+					console.log(credentialResponse);
+				}}
+				onError={() => {
+					console.log("Login Failed");
+				}}
+				auto_select={true}
+				theme="filled_blue"
+				context="signup"
+				locale="en"
+			/>
 			<p className="option auth-option">
 				Already have an account?{" "}
 				<span className="link">
