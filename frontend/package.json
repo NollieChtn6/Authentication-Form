@@ -13,6 +13,7 @@
 		"@biomejs/biome": "^1.9.4",
 		"@react-oauth/google": "^0.12.1",
 		"@swan-io/chicane": "^2.1.0",
+		"axios": "^1.7.7",
 		"lucide-react": "^0.454.0",
 		"react": "^18.3.1",
 		"react-dom": "^18.3.1",
