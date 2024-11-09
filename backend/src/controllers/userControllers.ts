@@ -80,3 +80,19 @@ export const signIn = async (req: Request, res: Response) => {
 			.json({ error: "Unexpected error occurred" });
 	}
 };
+
+export const logout = (req: Request, res: Response) => {
+	try {
+		res.clearCookie("token", {
+			httpOnly: true,
+			secure: false,
+			sameSite: "strict",
+		});
+		return res.status(StatusCodes.OK).json({ message: "Logout successful" });
+	} catch (error) {
+		console.error("Logout error:", error);
+		return res
+			.status(StatusCodes.INTERNAL_SERVER_ERROR)
+			.json({ error: "Failed to logout" });
+	}
+};
